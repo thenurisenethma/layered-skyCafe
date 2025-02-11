@@ -13,5 +13,4 @@ import lombok.*;
         private String description;
         private String unit_of_measurein_gram_or_miligram;
 
-
     }

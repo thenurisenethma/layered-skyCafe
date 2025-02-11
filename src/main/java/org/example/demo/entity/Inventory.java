@@ -9,7 +9,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class InventoryDTO {
+public class Inventory {
     private String inventory_id;
     private String ingredient_id;
     private String supplier_id;

@@ -1,7 +1,6 @@
 package org.example.demo.controller;
 
 import org.example.demo.bo.BOFactory;
-import org.example.demo.bo.custom.CustomerBO;
 import org.example.demo.bo.custom.IngredientBO;
 import org.example.demo.dto.IngredientDTO;
 import javafx.collections.FXCollections;
@@ -14,6 +13,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.example.demo.tdm.IngredientTM;
+
+
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -40,16 +43,16 @@ public class IngredientController implements Initializable {
     private Button btnUpdate;
 
     @FXML
-    private TableColumn<?, ?> colDesc;
+    private TableColumn<IngredientTM, String> colIngId;
 
     @FXML
-    private TableColumn<?, ?> colIngId;
+    private TableColumn<IngredientTM, String> colName;
 
     @FXML
-    private TableColumn<?, ?> colName;
+    private TableColumn<IngredientTM, String> colDesc;
 
     @FXML
-    private TableColumn<?, ?> colUnit;
+    private TableColumn<IngredientTM, String> colUnit;
 
     @FXML
     private TableView<IngredientTM> tblProIngDetail;
@@ -62,7 +65,6 @@ public class IngredientController implements Initializable {
 
     @FXML
     private TextField txtUnit;
-
     IngredientBO ingredientBO = (IngredientBO)BOFactory.getInstance().getBO(BOFactory.BOType.INGREDIENT);
 
     @Override
@@ -72,7 +74,6 @@ public class IngredientController implements Initializable {
         colDesc.setCellValueFactory(new PropertyValueFactory<>("description"));
         colUnit.setCellValueFactory(new PropertyValueFactory<>("unit_of_measurein_gram_or_miligram"));
 
-
         try {
             refreshPage();
         } catch (Exception e) {
@@ -80,6 +81,7 @@ public class IngredientController implements Initializable {
             new Alert(Alert.AlertType.ERROR, "Fail to load ingredient id").show();
         }
     }
+
 
     private void refreshPage() throws SQLException, ClassNotFoundException {
         loadNextIngredientId();
