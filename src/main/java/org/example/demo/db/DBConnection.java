@@ -17,7 +17,9 @@ public class DBConnection {
         return dbConnection == null ? dbConnection= new DBConnection() : dbConnection;
     }
 
-    public Connection getConnection() {
-        return connection;
+    public static Connection getConnection() throws SQLException, ClassNotFoundException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/skyCafe", "root", "1234");
     }
+
 }

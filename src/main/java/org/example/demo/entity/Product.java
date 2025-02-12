@@ -7,13 +7,11 @@ import lombok.ToString;
 
 @Getter
 @AllArgsConstructor
-@NoArgsConstructor
 @ToString
-public class OrdersDTO {
-    private String orders_id;
-    private String customer_id;
+@NoArgsConstructor
+public class Product {
+    private String product_id;
     private String name;
-    private int qty;
-
-
+    private String category;
+    private double price;
 }

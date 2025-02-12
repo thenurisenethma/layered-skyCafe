@@ -44,4 +44,14 @@ public class InventoryBOImpl implements InventoryBO {
     public boolean updateInventory(InventoryDTO inventoryDTO) throws SQLException, ClassNotFoundException {
         return inventoryDAO.update(new Inventory(inventoryDTO.getInventory_id(),inventoryDTO.getIngredient_id(),inventoryDTO.getSupplier_id(),inventoryDTO.getUpdated_date(),inventoryDTO.getExp_date(),inventoryDTO.getQty_available_in_gram_or_miligram()));
     }
+
+    @Override
+    public boolean reduceCakeQty(String name, int qty) throws SQLException, ClassNotFoundException {
+        return inventoryDAO.reduceCakeQty(name,qty);
+    }
+
+    @Override
+    public int getAvailableStock(String name) {
+        return 0;
+    }
 }

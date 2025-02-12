@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="821.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.controller.ReservationController">
+   <children>
+      <AnchorPane layoutY="-3.0" prefHeight="580.0" prefWidth="821.0">
+         <children>
+            <Label layoutX="339.0" layoutY="40.0" prefHeight="31.0" prefWidth="143.0" text="Reservation" textFill="#6e3d01">
+               <font>
+                  <Font name="Palatino Linotype Bold" size="24.0" />
+               </font>
+            </Label>
+            <TableView fx:id="tblRes" layoutX="158.0" layoutY="402.0" onMouseClicked="#onClickTable" prefHeight="153.0" prefWidth="521.0">
+               <columns>
+                  <TableColumn fx:id="colCustId" prefWidth="124.66669464111328" text="Customer Id" />
+                  <TableColumn fx:id="colResId" prefWidth="123.99995422363281" text="Reservation Id" />
+                  <TableColumn fx:id="colDate" prefWidth="132.66671752929688" text="Date" />
+                  <TableColumn fx:id="colTime" prefWidth="116.6666259765625" text="Time" />
+               </columns>
+            </TableView>
+            <Button fx:id="btnReset" layoutX="416.0" layoutY="356.0" mnemonicParsing="false" onAction="#onActionReset" prefHeight="25.0" prefWidth="224.0" style="-fx-background-color: #6e3d01;" text="Reset" textFill="WHITE" />
+            <TextField fx:id="txtDate" layoutX="307.0" layoutY="219.0" prefHeight="25.0" prefWidth="224.0" />
+            <Button fx:id="btnSave" layoutX="312.0" layoutY="313.0" mnemonicParsing="false" onAction="#onActionSave" prefHeight="25.0" prefWidth="107.0" style="-fx-background-color: #6e3d01;" text="Save" textFill="WHITE" />
+            <Button fx:id="btnUpdate" layoutX="636.0" layoutY="313.0" mnemonicParsing="false" onAction="#onActionUpdate" prefHeight="25.0" prefWidth="107.0" style="-fx-background-color: #6e3d01;" text="Update" textFill="WHITE" />
+            <Button fx:id="btnDelete" layoutX="477.0" layoutY="313.0" mnemonicParsing="false" onAction="#onActionDelete" prefHeight="25.0" prefWidth="107.0" style="-fx-background-color: #6e3d01;" text="Delete" textFill="WHITE" />
+            <Label fx:id="lblcustId" layoutX="116.0" layoutY="173.0" prefHeight="24.0" prefWidth="96.0" text="Customer Id" textFill="#6e3d01">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblDate" layoutX="117.0" layoutY="220.0" prefHeight="24.0" prefWidth="96.0" text="Date" textFill="#6e3d01">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTime" layoutX="117.0" layoutY="264.0" prefHeight="24.0" prefWidth="96.0" text="Time" textFill="#6e3d01">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtTime" layoutX="307.0" layoutY="264.0" prefHeight="25.0" prefWidth="224.0" />
+            <Label fx:id="lblResId" layoutX="116.0" layoutY="132.0" prefHeight="24.0" prefWidth="96.0" text="Reservation Id" textFill="#6e3d01">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtCustId" layoutX="307.0" layoutY="173.0" prefHeight="25.0" prefWidth="224.0" />
+            <Label fx:id="tLblResId" layoutX="311.0" layoutY="136.0" prefHeight="25.0" prefWidth="217.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

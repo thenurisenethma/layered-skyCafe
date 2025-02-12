@@ -9,9 +9,9 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @NoArgsConstructor
-public class ProductDTO {
-    private String product_id;
-    private String name;
-    private String category;
-    private double price;
+public class User {
+        private String user_id;
+        private String username;
+        private String password;
+        private String role;
 }

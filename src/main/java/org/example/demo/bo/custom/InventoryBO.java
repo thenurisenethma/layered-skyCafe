@@ -19,4 +19,8 @@ public interface InventoryBO extends SuperBO {
     boolean saveInvtry(InventoryDTO inventoryDTO) throws SQLException, ClassNotFoundException;
 
     boolean updateInventory(InventoryDTO inventoryDTO) throws SQLException, ClassNotFoundException;
+
+    boolean reduceCakeQty(String name, int qty) throws SQLException, ClassNotFoundException;
+
+    int getAvailableStock(String name);
 }

@@ -1,5 +1,5 @@
-package org.example.demo.dto;
-//3
+package org.example.demo.entity;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +9,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @NoArgsConstructor
-public class ReservationDTO {
+public class Reservation {
     private String reservation_id;
     private String customer_id;
     private String date;

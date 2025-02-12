@@ -16,4 +16,6 @@ public interface InventoryDAO extends CrudDAO<Inventory> {
     boolean save(Inventory inventory) throws SQLException, ClassNotFoundException;
 
     boolean update(Inventory inventory) throws SQLException, ClassNotFoundException;
+
+    boolean reduceCakeQty(String name, int qty) throws SQLException, ClassNotFoundException;
 }

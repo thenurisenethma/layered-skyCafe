@@ -10,6 +10,6 @@ public class OrdersTM {
         private String orders_id;
         private String customer_id;
         private String name;
-
+        private int qty;
 
 }
