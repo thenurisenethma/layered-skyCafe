@@ -46,7 +46,7 @@ public class ReservationDAOImpl implements ReservationDAO {
     }
 
     @Override
-    public Boolean update(Reservation reservation) throws SQLException, ClassNotFoundException {
+    public boolean update(Reservation reservation) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("UPDATE product set customer_id=?,date=?,time=? where reservation_id=?",reservation.getCustomer_id(),reservation.getDate(),reservation.getTime(),reservation.getReservation_id());
     }
 

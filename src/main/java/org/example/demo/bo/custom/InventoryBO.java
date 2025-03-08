@@ -10,17 +10,17 @@ import java.util.ArrayList;
 
 public interface InventoryBO extends SuperBO {
 
-    ArrayList<InventoryDTO> getAllInventory() throws SQLException, ClassNotFoundException;
+    ArrayList<InventoryDTO> getAll() throws SQLException, ClassNotFoundException;
 
     String getNextInvId() throws SQLException, ClassNotFoundException;
 
-    boolean deleteInvtry(String invtryId) throws SQLException, ClassNotFoundException;
+    boolean delete(String invtryId) throws SQLException, ClassNotFoundException;
 
-    boolean saveInvtry(InventoryDTO inventoryDTO) throws SQLException, ClassNotFoundException;
+    boolean save(InventoryDTO inventoryDTO) throws SQLException, ClassNotFoundException;
 
-    boolean updateInventory(InventoryDTO inventoryDTO) throws SQLException, ClassNotFoundException;
+    boolean update(InventoryDTO inventoryDTO) throws SQLException, ClassNotFoundException;
 
     boolean reduceCakeQty(String name, int qty) throws SQLException, ClassNotFoundException;
 
-    int getAvailableStock(String name);
+    int getAvailableStock(String name) throws SQLException, ClassNotFoundException;
 }

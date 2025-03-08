@@ -28,11 +28,19 @@ public class CustomerDAOImpl implements CustomerDAO {
     @Override
     public boolean delete(String customerId) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("DELETE from customer where customer_id = ?",customerId);
+
+
     }
 
     @Override
     public boolean update(Customer customer) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("UPDATE customer set name= ?, contact=? , email=? where customer_id=?",customer.getName(),customer.getContact(),customer.getEmail(),customer.getCustomer_id());
+         return SQLUtil.execute("UPDATE customer set name= ?, contact=? , email=? where customer_id=?",customer.getName(),customer.getContact(),customer.getEmail(),customer.getCustomer_id());
+    }
+
+
+    @Override
+    public void uniqueMethodCustomer() {
+
     }
 
     @Override

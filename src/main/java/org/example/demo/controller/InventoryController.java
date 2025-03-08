@@ -113,7 +113,7 @@ public class InventoryController implements Initializable {
     }
 
     private void loadTableData() throws SQLException, ClassNotFoundException {
-        ArrayList<InventoryDTO> inventoryDTOS = inventoryBO.getAllInventory();
+        ArrayList<InventoryDTO> inventoryDTOS = inventoryBO.getAll();
 
         ObservableList<InventoryTM> inventoryTMS = FXCollections.observableArrayList();
 
@@ -147,7 +147,7 @@ public class InventoryController implements Initializable {
 
         if (optionalButtonType.isPresent() && optionalButtonType.get() == ButtonType.YES) {
 
-            boolean isDeleted = inventoryBO.deleteInvtry(invtryId);
+            boolean isDeleted = inventoryBO.delete(invtryId);
             if (isDeleted) {
                 refreshPage();
                 new Alert(Alert.AlertType.INFORMATION, " deleted...!").show();
@@ -189,7 +189,7 @@ public class InventoryController implements Initializable {
 
         );
 
-        boolean isSaved = inventoryBO.saveInvtry(inventoryDTO);
+        boolean isSaved = inventoryBO.save(inventoryDTO);
         if (isSaved) {
             refreshPage();
             new Alert(Alert.AlertType.INFORMATION, " saved...!").show();
@@ -223,7 +223,7 @@ public class InventoryController implements Initializable {
 
         );
 
-        boolean isUpdate = inventoryBO.updateInventory(inventoryDTO);
+        boolean isUpdate = inventoryBO.update(inventoryDTO);
         if (isUpdate) {
             refreshPage();
             new Alert(Alert.AlertType.INFORMATION, " update...!").show();

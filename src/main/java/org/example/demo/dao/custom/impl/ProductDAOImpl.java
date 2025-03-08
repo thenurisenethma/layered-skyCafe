@@ -41,7 +41,7 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    public Boolean update(Product product) throws SQLException, ClassNotFoundException {
+    public boolean update(Product product) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("UPDATE product set name=?,category=?,price=? where product_id=?",product.getName(),product.getCategory(),product.getPrice(),product.getProduct_id());
     }
 }

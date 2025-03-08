@@ -108,7 +108,7 @@ public class ReservationController {
 
                 if (optionalButtonType.isPresent() && optionalButtonType.get() == ButtonType.YES) {
 
-                        boolean isDeleted = reservationBO.deleteReservation(reservationId);
+                        boolean isDeleted = reservationBO.delete(reservationId);
                         if (isDeleted) {
                                 refreshPage();
                                 new Alert(Alert.AlertType.INFORMATION, "Customer deleted...!").show();
@@ -145,7 +145,7 @@ public class ReservationController {
                         time
                 );
 
-                boolean isSaved = reservationBO.saveReservation(reservationDTO);
+                boolean isSaved = reservationBO.save(reservationDTO);
                 if(isSaved) {
                         refreshPage();
                         new Alert(Alert.AlertType.INFORMATION, "Reservation saved").show();
@@ -170,7 +170,7 @@ public class ReservationController {
                         date,
                         time
                 );
-                Boolean isUpdate = reservationBO.updateReservation(reservationDTO);
+                Boolean isUpdate = reservationBO.update(reservationDTO);
                 if(isUpdate) {
                         refreshPage();
                         new Alert(Alert.AlertType.INFORMATION, "updated").show();
@@ -207,7 +207,7 @@ public class ReservationController {
         }
 
         private void loadTableData() throws SQLException, ClassNotFoundException {
-                ArrayList<ReservationDTO> reservationDTOs = reservationBO.getAllReservations();
+                ArrayList<ReservationDTO> reservationDTOs = reservationBO.getAll();
 
                 ObservableList<ReservationTM> reservationTMS= FXCollections.observableArrayList();
                 for(ReservationDTO reservationDTO : reservationDTOs) {

@@ -8,13 +8,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface ScheduleBO extends SuperBO {
-    boolean saveSchedule(ScheduleDTO scheduleDTO) throws SQLException, ClassNotFoundException;
+    boolean save (ScheduleDTO scheduleDTO) throws SQLException, ClassNotFoundException;
 
-    boolean deleteSchedule(String schedule_id) throws SQLException, ClassNotFoundException;
+    boolean delete (String schedule_id) throws SQLException, ClassNotFoundException;
 
-    ArrayList<ScheduleDTO> getAllSchedules() throws SQLException, ClassNotFoundException;
+    ArrayList<ScheduleDTO> getAll () throws SQLException, ClassNotFoundException;
 
     String getNextScheduleId() throws SQLException, ClassNotFoundException;
 
-    boolean updateSchedule(ScheduleDTO scheduleDTO) throws SQLException, ClassNotFoundException;
+    boolean update (ScheduleDTO scheduleDTO) throws SQLException, ClassNotFoundException;
 }

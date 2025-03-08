@@ -7,13 +7,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface IngredientBO extends SuperBO {
-    ArrayList<IngredientDTO> getAllIngredients() throws SQLException, ClassNotFoundException;
+    ArrayList<IngredientDTO> getAll () throws SQLException, ClassNotFoundException;
 
     String getNextIngredientId() throws SQLException, ClassNotFoundException;
 
-    boolean deleteIngredient(String ingredientId) throws SQLException, ClassNotFoundException;
+    boolean delete (String ingredientId) throws SQLException, ClassNotFoundException;
 
-    boolean saveIngredient(IngredientDTO ingredientDTO) throws SQLException, ClassNotFoundException;
+    boolean save (IngredientDTO ingredientDTO) throws SQLException, ClassNotFoundException;
 
-    boolean updateIngredient(IngredientDTO ingredientDTO) throws SQLException, ClassNotFoundException;
+    boolean update (IngredientDTO ingredientDTO) throws SQLException, ClassNotFoundException;
 }

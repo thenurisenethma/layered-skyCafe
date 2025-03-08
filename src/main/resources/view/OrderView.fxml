@@ -28,6 +28,7 @@
             <TableColumn fx:id="colCustId" prefWidth="128.6666717529297" text="Customer id" />
             <TableColumn fx:id="colName" prefWidth="211.33334350585938" text="Product" />
             <TableColumn fx:id="colQty" prefWidth="143.3333740234375" text="qty" />
+
          </columns>
       </TableView>
       <Button fx:id="btnSave" layoutX="91.0" layoutY="253.0" mnemonicParsing="false" onAction="#onActionSave" prefHeight="25.0" prefWidth="271.0" style="-fx-background-color: #6e3d01;" text="Place an order" textFill="WHITE" />
@@ -55,7 +56,7 @@
          </font>
       </Label>
       <TextField fx:id="txtQty" layoutX="296.0" layoutY="191.0" prefHeight="25.0" prefWidth="224.0" />
-      <Button fx:id="btnReset1" layoutX="573.0" layoutY="253.0" mnemonicParsing="false" onAction="#onActionReset" prefHeight="25.0" prefWidth="157.0" style="-fx-background-color: #6e3d01;" text="Delete" textFill="WHITE" />
+      <Button fx:id="btnDelete" layoutX="573.0" layoutY="253.0" mnemonicParsing="false" onAction="#onActionDelete" prefHeight="25.0" prefWidth="157.0" style="-fx-background-color: #6e3d01;" text="Delete" textFill="WHITE" />
       <TextField fx:id="txtCustId" layoutX="299.0" layoutY="126.0" prefHeight="25.0" prefWidth="224.0" />
    </children>
 </AnchorPane>

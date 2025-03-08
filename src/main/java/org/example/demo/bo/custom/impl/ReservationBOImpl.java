@@ -15,7 +15,7 @@ public class ReservationBOImpl implements ReservationBO {
 
     ReservationDAO reservationDAO = (ReservationDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOType.RESERVATION);
 
-    public ArrayList<ReservationDTO> getAllReservations() throws SQLException, ClassNotFoundException {
+    public ArrayList<ReservationDTO> getAll() throws SQLException, ClassNotFoundException {
         ArrayList<ReservationDTO> reservationDTOS = new ArrayList<>();
         ArrayList<Reservation> reservations = reservationDAO.getAll();
         for (Reservation reservation : reservations) {
@@ -35,19 +35,19 @@ public class ReservationBOImpl implements ReservationBO {
     }
 
     @Override
-    public boolean deleteReservation(String reservationId) throws SQLException, ClassNotFoundException {
+    public boolean delete (String reservationId) throws SQLException, ClassNotFoundException {
         return reservationDAO.delete(reservationId);
 
     }
 
     @Override
-    public boolean saveReservation(ReservationDTO reservationDTO) throws SQLException, ClassNotFoundException {
+    public boolean save (ReservationDTO reservationDTO) throws SQLException, ClassNotFoundException {
         return reservationDAO.save(new Reservation(reservationDTO.getReservation_id(),reservationDTO.getCustomer_id(),reservationDTO.getDate(),reservationDTO.getTime()));
 
     }
 
     @Override
-    public Boolean updateReservation(ReservationDTO reservationDTO) throws SQLException, ClassNotFoundException {
+    public Boolean update (ReservationDTO reservationDTO) throws SQLException, ClassNotFoundException {
         return reservationDAO.update(new Reservation(reservationDTO.getReservation_id(),reservationDTO.getCustomer_id(),reservationDTO.getDate(),reservationDTO.getTime()));
     }
 

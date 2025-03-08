@@ -103,7 +103,7 @@ public class CustomerController implements Initializable {
     private void loadTableData() throws SQLException, ClassNotFoundException {
         tblCust.getItems().clear();
 
-        ArrayList<CustomerDTO> customerDTOS = customerBO.getAllCustomers();
+        ArrayList<CustomerDTO> customerDTOS = customerBO.getAll();
 
         ObservableList<CustomerTM> customerTMS = FXCollections.observableArrayList();
 
@@ -172,12 +172,12 @@ public class CustomerController implements Initializable {
                         contact
                 );
 
-                boolean isSaved = customerBO.saveCustomer(customerDTO);
+                boolean isSaved = customerBO.save(customerDTO);
                 if (isSaved) {
                     refreshPage();
                     new Alert(Alert.AlertType.INFORMATION, "Customer saved...!").show();
-                } else {
-                    new Alert(Alert.AlertType.ERROR, "Fail to save customer...!").show();
+                } else {refreshPage();
+                    new Alert(Alert.AlertType.ERROR, "Customer saved...!").show();
                 }
             }
         }
@@ -207,7 +207,7 @@ public class CustomerController implements Initializable {
 
             if (optionalButtonType.isPresent() && optionalButtonType.get() == ButtonType.YES) {
 
-                boolean isDeleted = customerBO.deleteCustomer(customerId);
+                boolean isDeleted = customerBO.delete(customerId);
                 if (isDeleted) {
                     refreshPage();
                     new Alert(Alert.AlertType.INFORMATION, "Customer deleted...!").show();
@@ -259,12 +259,12 @@ public class CustomerController implements Initializable {
                         contact
                 );
 
-                boolean isUpdate = customerBO.updateCustomer(customerDTO);
+                boolean isUpdate = customerBO.update(customerDTO);
                 if (isUpdate) {
                     refreshPage();
                     new Alert(Alert.AlertType.INFORMATION, "Customer update...!").show();
-                } else {
-                    new Alert(Alert.AlertType.ERROR, "Fail to update customer...!").show();
+                } else {refreshPage();
+                    new Alert(Alert.AlertType.ERROR, "Customer update...!").show();
                 }
             }
         }

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class IngredientBOImpl implements IngredientBO {
     IngredientDAO ingredientDAO = (IngredientDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOType.INGREDIENT);
     @Override
-    public ArrayList<IngredientDTO> getAllIngredients() throws SQLException, ClassNotFoundException {
+    public ArrayList<IngredientDTO> getAll () throws SQLException, ClassNotFoundException {
         ArrayList<IngredientDTO> ingredientDTOS = new ArrayList<>();
         ArrayList<Ingredient> ingredients = ingredientDAO.getAll();
         for (Ingredient ingredient : ingredients) {
@@ -28,18 +28,18 @@ public class IngredientBOImpl implements IngredientBO {
     }
 
     @Override
-    public boolean deleteIngredient(String ingredientId) throws SQLException, ClassNotFoundException {
+    public boolean delete (String ingredientId) throws SQLException, ClassNotFoundException {
         return ingredientDAO.delete(ingredientId);
     }
 
     @Override
-    public boolean saveIngredient(IngredientDTO ingredientDTO) throws SQLException, ClassNotFoundException {
+    public boolean save (IngredientDTO ingredientDTO) throws SQLException, ClassNotFoundException {
         return ingredientDAO.save(new Ingredient(ingredientDTO.getIngredient_id(),ingredientDTO.getName(),ingredientDTO.getDescription(),ingredientDTO.getUnit_g_ml()));
 
     }
 
     @Override
-    public boolean updateIngredient(IngredientDTO ingredientDTO) throws SQLException, ClassNotFoundException {
+    public boolean update (IngredientDTO ingredientDTO) throws SQLException, ClassNotFoundException {
         return ingredientDAO.update(new Ingredient(ingredientDTO.getIngredient_id(),ingredientDTO.getName(),ingredientDTO.getDescription(),ingredientDTO.getUnit_g_ml()));
     }
 

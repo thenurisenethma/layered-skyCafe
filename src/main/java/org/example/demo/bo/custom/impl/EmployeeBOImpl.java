@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class EmployeeBOImpl implements EmployeeBO {
     EmployeeDAO employeeDAO = (EmployeeDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOType.EMPLOYEE);
     @Override
-    public ArrayList<EmployeeDTO> getAllEmployees() throws SQLException, ClassNotFoundException {
+    public ArrayList<EmployeeDTO> getAll () throws SQLException, ClassNotFoundException {
         ArrayList<EmployeeDTO> employeeDTOS = new ArrayList<>();
         ArrayList<Employee> employees = employeeDAO.getAll();
         for (Employee employee : employees) {
@@ -26,17 +26,17 @@ public class EmployeeBOImpl implements EmployeeBO {
     }
 
     @Override
-    public boolean deleteEmployee(String employeeId) throws SQLException, ClassNotFoundException {
+    public boolean delete (String employeeId) throws SQLException, ClassNotFoundException {
         return employeeDAO.delete(employeeId);
     }
 
     @Override
-    public boolean saveEmployee(EmployeeDTO employeeDTO) throws SQLException, ClassNotFoundException {
+    public boolean save (EmployeeDTO employeeDTO) throws SQLException, ClassNotFoundException {
         return employeeDAO.save(new Employee(employeeDTO.getEmployee_id(),employeeDTO.getUser_id(),employeeDTO.getName(),employeeDTO.getContact(),employeeDTO.getRole()));
     }
 
     @Override
-    public boolean updateEmployee(EmployeeDTO employeeDTO) throws SQLException, ClassNotFoundException {
+    public boolean update (EmployeeDTO employeeDTO) throws SQLException, ClassNotFoundException {
         return employeeDAO.update(new Employee(employeeDTO.getEmployee_id(),employeeDTO.getUser_id(),employeeDTO.getName(),employeeDTO.getContact(),employeeDTO.getRole() ));
     }
 

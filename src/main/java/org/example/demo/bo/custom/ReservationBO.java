@@ -7,14 +7,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface ReservationBO extends SuperBO {
-    ArrayList<ReservationDTO> getAllReservations() throws SQLException, ClassNotFoundException;
+    ArrayList<ReservationDTO> getAll () throws SQLException, ClassNotFoundException;
     String getNextReservationId() throws SQLException, ClassNotFoundException;
 
-    boolean deleteReservation(String reservationId) throws SQLException, ClassNotFoundException;
+    boolean delete (String reservationId) throws SQLException, ClassNotFoundException;
 
-    boolean saveReservation(ReservationDTO reservationDTO) throws SQLException, ClassNotFoundException;
+    boolean save (ReservationDTO reservationDTO) throws SQLException, ClassNotFoundException;
 
-    Boolean updateReservation(ReservationDTO reservationDTO) throws SQLException, ClassNotFoundException;
+    Boolean update (ReservationDTO reservationDTO) throws SQLException, ClassNotFoundException;
 
 }
 

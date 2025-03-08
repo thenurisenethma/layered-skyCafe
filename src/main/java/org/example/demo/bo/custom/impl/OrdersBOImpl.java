@@ -12,11 +12,11 @@ import java.util.ArrayList;
 public class OrdersBOImpl implements OrdersBO {
     OrdersDAO ordersDAO=(OrdersDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOType.ORDERS);
     @Override
-    public ArrayList<OrdersDTO> getAllOrders() throws SQLException, ClassNotFoundException {
+    public ArrayList<OrdersDTO> getAll() throws SQLException, ClassNotFoundException {
         OrdersDAO ordersDAO = (OrdersDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOType.ORDERS);
 
         ArrayList<OrdersDTO> ordersDTOS = new ArrayList<>();
-        ArrayList<Orders> orders = ordersDAO.getAllOrders();
+        ArrayList<Orders> orders = ordersDAO.getAll ();
         for (Orders orders1 : orders) {
             ordersDTOS.add(new OrdersDTO(orders1.getOrders_id(),orders1.getName(),orders1.getCustomer_id(),orders1.getQty()));
         }
@@ -25,7 +25,7 @@ public class OrdersBOImpl implements OrdersBO {
     }
 
     @Override
-    public boolean saveOrders(OrdersDTO ordersDTO) throws SQLException, ClassNotFoundException {
+    public boolean save(OrdersDTO ordersDTO) throws SQLException, ClassNotFoundException {
         return ordersDAO.save(new Orders(ordersDTO.getOrders_id(),ordersDTO.getCustomer_id(),ordersDTO.getName(),ordersDTO.getQty()));
 
     }
@@ -36,7 +36,7 @@ public class OrdersBOImpl implements OrdersBO {
     }
 
     @Override
-    public boolean deleteOrder(String orderId) throws SQLException, ClassNotFoundException {
+    public boolean delete(String orderId) throws SQLException, ClassNotFoundException {
         return ordersDAO.delete(orderId);
     }
 }

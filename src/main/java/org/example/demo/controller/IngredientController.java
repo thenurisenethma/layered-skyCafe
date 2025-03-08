@@ -99,7 +99,7 @@ public class IngredientController implements Initializable {
     }
 
     private void loadTableData() throws SQLException, ClassNotFoundException {
-        ArrayList<IngredientDTO> ingredientDTOS = ingredientBO.getAllIngredients();
+        ArrayList<IngredientDTO> ingredientDTOS = ingredientBO.getAll();
 
         ObservableList<IngredientTM> ingredientTMS = FXCollections.observableArrayList();
 
@@ -131,7 +131,7 @@ public class IngredientController implements Initializable {
 
         if (optionalButtonType.isPresent() && optionalButtonType.get() == ButtonType.YES) {
 
-            boolean isDeleted = ingredientBO.deleteIngredient(ingredientId);
+            boolean isDeleted = ingredientBO.delete(ingredientId);
             if (isDeleted) {
                 refreshPage();
                 new Alert(Alert.AlertType.INFORMATION, " deleted...!").show();
@@ -164,7 +164,7 @@ public class IngredientController implements Initializable {
                     unit
             );
 
-            boolean isSaved = ingredientBO.saveIngredient(ingredientDTO);
+            boolean isSaved = ingredientBO.save(ingredientDTO);
             if (isSaved) {
                 refreshPage();
                 new Alert(Alert.AlertType.INFORMATION, "saved...!").show();
@@ -192,7 +192,7 @@ public class IngredientController implements Initializable {
                     unit
             );
 
-            boolean isUpdate = ingredientBO.updateIngredient(ingredientDTO);
+            boolean isUpdate = ingredientBO.update(ingredientDTO);
             if (isUpdate) {
                 refreshPage();
                 new Alert(Alert.AlertType.INFORMATION, " update...!").show();

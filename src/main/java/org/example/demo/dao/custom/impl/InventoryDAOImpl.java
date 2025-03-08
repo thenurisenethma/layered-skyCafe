@@ -1,6 +1,5 @@
 package org.example.demo.dao.custom.impl;
 
-import org.example.demo.dao.CrudDAO;
 import org.example.demo.dao.SQLUtil;
 import org.example.demo.dao.custom.InventoryDAO;
 import org.example.demo.dto.InventoryDTO;
@@ -13,7 +12,7 @@ public class InventoryDAOImpl implements InventoryDAO {
     InventoryDTO inventoryDTO=new InventoryDTO();
 
     @Override
-    public ArrayList<Inventory> getAllInventory() throws SQLException, ClassNotFoundException {
+    public ArrayList<Inventory> getAll() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("SELECT * from inventory");
         ArrayList<Inventory> getInventory = new ArrayList();
         while (rst.next()) {
@@ -43,7 +42,7 @@ public class InventoryDAOImpl implements InventoryDAO {
 
     @Override
     public boolean update(Inventory inventory) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("UPDATE inventory set ingredient_id=?,supplier_id=?,updated_date=?,exp_date=?,qty_available_in_gram_or_miligram=? where inventory_id=?",inventory.getIngredient_id(),inventory.getSupplier_id(),inventory.getUpdated_date(),inventory.getExp_date(),inventory.getQty_available_in_gram_or_miligram(),inventory.getInventory_id());
+        return  SQLUtil.execute("UPDATE inventory set ingredient_id=?,supplier_id=?,updated_date=?,exp_date=?,qty_available_in_gram_or_miligram=? where inventory_id=?",inventory.getIngredient_id(),inventory.getSupplier_id(),inventory.getUpdated_date(),inventory.getExp_date(),inventory.getQty_available_in_gram_or_miligram(),inventory.getInventory_id());
     }
 
     @Override
@@ -61,6 +60,29 @@ public class InventoryDAOImpl implements InventoryDAO {
             }
         }
         return true;
+    }
+
+    @Override
+    public int getAvailableStock(String name) throws SQLException, ClassNotFoundException {
+        ResultSet rst1 = SQLUtil.execute("SELECT ingredient_id FROM product_ingredient_detail WHERE product_name = ?", name);
+
+        if (!rst1.next()) {
+            System.out.println("No ingredient_id found for product: " + name);
+            return 0;
+        }
+
+        String ingredientId = rst1.getString(1);
+        System.out.println("Ingredient ID for " + name + ": " + ingredientId);
+
+        ResultSet rst2 = SQLUtil.execute("SELECT COALESCE(SUM(qty_available_in_gram_or_miligram), 0) FROM inventory WHERE ingredient_id = ?", ingredientId);
+
+        if (rst2.next()) {
+            int stock = rst2.getInt(1);
+            System.out.println("Available stock for " + name + ": " + stock);
+            return stock;
+        }
+
+        return 0;
     }
 
     private boolean updateInventoryQuantity(int ingredientId, int remainingQty) throws SQLException, ClassNotFoundException {

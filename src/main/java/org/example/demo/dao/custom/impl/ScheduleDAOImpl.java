@@ -2,7 +2,6 @@ package org.example.demo.dao.custom.impl;
 
 import org.example.demo.dao.SQLUtil;
 import org.example.demo.dao.custom.ScheduleDAO;
-import org.example.demo.dto.ScheduleDTO;
 import org.example.demo.entity.Schedule;
 
 import java.sql.ResultSet;

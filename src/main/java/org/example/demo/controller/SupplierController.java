@@ -104,7 +104,7 @@ public class SupplierController implements Initializable {
 //    SupplierModel supplierModel = new SupplierModel();
 
     private void loadTableData() throws SQLException, ClassNotFoundException {
-        ArrayList<SupplierDTO> supplierDTOS = supplierBO.getAllSuppliers();
+        ArrayList<SupplierDTO> supplierDTOS = supplierBO.getAll();
 
         ObservableList<SupplierTM> supplierTMS = FXCollections.observableArrayList();
 
@@ -139,7 +139,7 @@ public class SupplierController implements Initializable {
 
         if (optionalButtonType.isPresent() && optionalButtonType.get() == ButtonType.YES) {
 
-            boolean isDeleted = supplierBO.deleteSupplier(supplierId);
+            boolean isDeleted = supplierBO.delete(supplierId);
             if (isDeleted) {
                 refreshPage();
                 new Alert(Alert.AlertType.INFORMATION, " deleted...!").show();
@@ -185,7 +185,7 @@ public class SupplierController implements Initializable {
                         address
                 );
 
-                boolean isSaved = supplierBO.saveSupplier(supplierDTO);
+                boolean isSaved = supplierBO.save(supplierDTO);
                 if (isSaved) {
                     refreshPage();
                     new Alert(Alert.AlertType.INFORMATION, " saved...!").show();
@@ -225,7 +225,7 @@ public class SupplierController implements Initializable {
                         address
                 );
 
-                boolean isUpdate = supplierBO.updateSupplier(supplierDTO);
+                boolean isUpdate = supplierBO.update(supplierDTO);
                 if (isUpdate) {
                     refreshPage();
                     new Alert(Alert.AlertType.INFORMATION, " updated...!").show();

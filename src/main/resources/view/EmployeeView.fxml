@@ -59,6 +59,6 @@
             <Font name="Palatino Linotype Bold" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="UserId" layoutX="218.0" layoutY="182.0" />
+      <TextField fx:id="txtUser_id" layoutX="218.0" layoutY="182.0" />
    </children>
 </AnchorPane>

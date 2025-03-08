@@ -31,11 +31,13 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     @Override
     public boolean delete(String employeeId) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("DELETE FROM employee where employee_id=?",employeeId);
+
     }
 
     @Override
     public boolean save(Employee employee) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("INSERT into employee values (?,?,?,?,?)",employee.getEmployee_id(),employee.getUser_id(),employee.getName(),employee.getContact(),employee.getRole());
+
+        return SQLUtil.execute("INSERT into employee values (?,?,?,?,?)", employee.getEmployee_id(), employee.getUser_id(), employee.getName(), employee.getContact(), employee.getRole());
     }
 
     @Override

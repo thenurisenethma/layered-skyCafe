@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class SupplierDAOImpl implements SupplierDAO {
     @Override
-    public ArrayList<Supplier> getAllSuppliers() throws SQLException, ClassNotFoundException {
+    public ArrayList<Supplier> getAll() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("SELECT * FROM supplier");
         ArrayList<Supplier> suppliers = new ArrayList<>();
         while (rst.next()) {
@@ -40,6 +40,7 @@ public class SupplierDAOImpl implements SupplierDAO {
 
     @Override
     public boolean update(Supplier supplier) throws SQLException, ClassNotFoundException {
+
         return SQLUtil.execute("UPDATE supplier set name=?,email=?,contact=?,address=? where supplier_id=?", supplier.getName(),  supplier.getEmail(),supplier.getContact(), supplier.getAddress(), supplier.getSupplier_id());
     }
 }

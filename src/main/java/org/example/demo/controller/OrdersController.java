@@ -71,10 +71,12 @@ public class OrdersController implements Initializable {
     InventoryBO inventoryBO = (InventoryBO) BOFactory.getInstance().getBO(BOFactory.BOType.INVENTORY);
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        colOrderId.setCellValueFactory(new PropertyValueFactory<>("order_id"));
-        colCustId.setCellValueFactory(new PropertyValueFactory<>("customer_id"));
-        colName.setCellValueFactory(new PropertyValueFactory<>("product_type"));
+        colOrderId.setCellValueFactory(new PropertyValueFactory<>("orderId"));
+        colCustId.setCellValueFactory(new PropertyValueFactory<>("customerId"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("productName"));
         colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+
+
 
         try {
             refreshPage();
@@ -105,7 +107,7 @@ public class OrdersController implements Initializable {
 
 
     private void loadTableData() throws SQLException, ClassNotFoundException {
-        ArrayList<OrdersDTO> ordersDTOS = ordersBO.getAllOrders();
+        ArrayList<OrdersDTO> ordersDTOS = ordersBO.getAll();
 
         ObservableList<OrdersTM> ordersTMS = FXCollections.observableArrayList();
         for (OrdersDTO ordersDTO : ordersDTOS) {
@@ -149,7 +151,7 @@ public class OrdersController implements Initializable {
             }
 
             OrdersDTO ordersDTO = new OrdersDTO(order_id, customer_id, name, qty);
-            boolean isSaved = ordersBO.saveOrders(ordersDTO);
+            boolean isSaved = ordersBO.save(ordersDTO);
 
             if (isSaved) {
                 boolean inventoryUpdated = inventoryBO.reduceCakeQty(name, qty);
@@ -245,7 +247,7 @@ public class OrdersController implements Initializable {
 
         if (optionalButtonType.isPresent() && optionalButtonType.get() == ButtonType.YES) {
 
-            boolean isDeleted = ordersBO.deleteOrder(OrderId);
+            boolean isDeleted = ordersBO.delete(OrderId);
             if (isDeleted) {
                 refreshPage();
                 System.out.println("Deleted Order ID: " + OrderId);

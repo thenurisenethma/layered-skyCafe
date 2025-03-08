@@ -89,7 +89,7 @@ public class ScheduleController implements Initializable {
                 shift
         );
 
-        boolean isSaved = scheduleBO.saveSchedule(scheduleDTO);
+        boolean isSaved = scheduleBO.save(scheduleDTO);
         if (isSaved) {
             refreshPage();
             new Alert(Alert.AlertType.INFORMATION, "saved...!").show();
@@ -124,7 +124,7 @@ public class ScheduleController implements Initializable {
 
         if (optionalButtonType.isPresent() && optionalButtonType.get() == ButtonType.YES) {
 
-            boolean isDeleted = scheduleBO.deleteSchedule(schedule_id);
+            boolean isDeleted = scheduleBO.delete(schedule_id);
             if (isDeleted) {
                 refreshPage();
                 new Alert(Alert.AlertType.INFORMATION, "deleted...!").show();
@@ -163,7 +163,7 @@ public class ScheduleController implements Initializable {
         txtShift.setText("");
     }
     private void loadTableData() throws SQLException, ClassNotFoundException {
-        ArrayList<ScheduleDTO> scheduleDTOS = scheduleBO.getAllSchedules();
+        ArrayList<ScheduleDTO> scheduleDTOS = scheduleBO.getAll();
 
         ObservableList<ScheduleTM> scheduleTMS = FXCollections.observableArrayList();
 
@@ -197,7 +197,7 @@ public class ScheduleController implements Initializable {
 
         ScheduleDTO scheduleDTO = new ScheduleDTO(employee_id,schedule_id, day, shift);
 
-        boolean isUpdate = scheduleBO.updateSchedule(scheduleDTO);
+        boolean isUpdate = scheduleBO.update(scheduleDTO);
         if (isUpdate) {
             refreshPage();
             new Alert(Alert.AlertType.INFORMATION, "updated...!").show();

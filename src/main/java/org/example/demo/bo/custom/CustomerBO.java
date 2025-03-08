@@ -9,13 +9,13 @@ import java.util.ArrayList;
 
 public interface CustomerBO extends SuperBO {
 
-    ArrayList<CustomerDTO> getAllCustomers() throws SQLException, ClassNotFoundException;
+    ArrayList<CustomerDTO> getAll() throws SQLException, ClassNotFoundException;
 
     String getNextCustomerId() throws SQLException, ClassNotFoundException;
 
-    boolean saveCustomer(CustomerDTO customerDTO) throws SQLException, ClassNotFoundException;
+    boolean save(CustomerDTO customerDTO) throws SQLException, ClassNotFoundException;
 
-    boolean deleteCustomer(String customerId) throws SQLException, ClassNotFoundException;
+    boolean delete(String customerId) throws SQLException, ClassNotFoundException;
 
-    boolean updateCustomer(CustomerDTO customerDTO) throws SQLException, ClassNotFoundException;
+    boolean update(CustomerDTO customerDTO) throws SQLException, ClassNotFoundException;
 }

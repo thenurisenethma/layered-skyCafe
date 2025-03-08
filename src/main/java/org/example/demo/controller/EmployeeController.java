@@ -69,6 +69,7 @@ public class EmployeeController implements Initializable {
 
     @FXML
     private TextField txtUser_id;
+
     EmployeeBO employeeBO = (EmployeeBO) BOFactory.getInstance().getBO(BOFactory.BOType.EMPLOYEE);
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -103,7 +104,7 @@ public class EmployeeController implements Initializable {
     /*EmployeeModel employeeModel = new EmployeeModel();*/
 
     private void loadTableData() throws SQLException, ClassNotFoundException {
-        ArrayList<EmployeeDTO> employeeDTOS = employeeBO.getAllEmployees();
+        ArrayList<EmployeeDTO> employeeDTOS = employeeBO.getAll();
 
         ObservableList<EmployeeTM> employeeTMS = FXCollections.observableArrayList();
 
@@ -136,7 +137,7 @@ public class EmployeeController implements Initializable {
 
         if (optionalButtonType.isPresent() && optionalButtonType.get() == ButtonType.YES) {
 
-            boolean isDeleted = employeeBO.deleteEmployee(employee_id);
+            boolean isDeleted = employeeBO.delete(employee_id);
             if (isDeleted) {
                 refreshPage();
                 new Alert(Alert.AlertType.INFORMATION, "Employee deleted...!").show();
@@ -153,7 +154,7 @@ public class EmployeeController implements Initializable {
     @FXML
     void onActionSave(ActionEvent event) throws SQLException, ClassNotFoundException {
         String employee_id = lblEmpId.getText();
-        String user_id = UserId.getText();
+        String user_id = txtUser_id.getText();
         String name = txtName.getText();
         String contact = txtContact.getText();
         String role = txtRole.getText();
@@ -184,8 +185,10 @@ public class EmployeeController implements Initializable {
                     employee_id,user_id,name,contact,role
             );
 
-            boolean isSaved = employeeBO.saveEmployee(employeeDTO);
+            boolean isSaved = employeeBO.save (employeeDTO);
             if (isSaved) {
+                refreshPage();
+                new Alert(Alert.AlertType.INFORMATION, "Employee saved...!").show();
                 System.out.println("Employee saved successfully!");
             } else {
                 System.out.println("Failed to save employee.");
@@ -241,11 +244,11 @@ public class EmployeeController implements Initializable {
                     employee_id, user_id, name, contact,role
             );
 
-            boolean isUpdate = employeeBO.updateEmployee(employeeDTO);
+            boolean isUpdate = employeeBO.update (employeeDTO);
             if (isUpdate) {
                 refreshPage();
                 new Alert(Alert.AlertType.INFORMATION, "Employee update...!").show();
-            } else {
+            } else {refreshPage();
                 new Alert(Alert.AlertType.ERROR, "Fail to update employee...!").show();
             }
         }

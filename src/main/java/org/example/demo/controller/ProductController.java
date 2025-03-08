@@ -91,7 +91,7 @@ public class ProductController implements Initializable {
     }
 
     private void loadTableData() throws SQLException, ClassNotFoundException {
-        ArrayList<ProductDTO> productDTOS = productBO.getAllProducts();
+        ArrayList<ProductDTO> productDTOS = productBO.getAll();
 
         ObservableList<ProductTM> productTMS= FXCollections.observableArrayList();
         for(ProductDTO productDTO : productDTOS) {
@@ -119,7 +119,7 @@ public class ProductController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Are you sure?",ButtonType.YES,ButtonType.NO);
         Optional<ButtonType> result = alert.showAndWait();
         if(result.isPresent() && result.get() == ButtonType.YES) {
-            boolean isDelete = productBO.deleteProduct(productId);
+            boolean isDelete = productBO.delete(productId);
             if (isDelete) {
                 refreshPage();
                 new Alert(Alert.AlertType.INFORMATION, "Product deleted").show();
@@ -151,7 +151,7 @@ public class ProductController implements Initializable {
                 category,
                 price
         );
-        boolean isSaved = productBO.saveProduct(productDTO);
+        boolean isSaved = productBO.save(productDTO);
         if(isSaved) {
             refreshPage();
             new Alert(Alert.AlertType.INFORMATION, "Product saved").show();
@@ -172,7 +172,7 @@ public class ProductController implements Initializable {
         ProductDTO productDTO = new ProductDTO(
                 productId,name,category,price
         );
-        Boolean isUpdate = productBO.updateProduct(productDTO);
+        Boolean isUpdate = productBO.update(productDTO);
         if(isUpdate) {
             refreshPage();
             new Alert(Alert.AlertType.INFORMATION, "Product updated").show();

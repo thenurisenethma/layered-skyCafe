@@ -13,9 +13,9 @@ public class SupplierBOImpl implements SupplierBO {
 
     SupplierDAO supplierDAO = (SupplierDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOType.SUPPLIER);
     @Override
-    public ArrayList<SupplierDTO> getAllSuppliers() throws SQLException, ClassNotFoundException {
+    public ArrayList<SupplierDTO> getAll() throws SQLException, ClassNotFoundException {
         ArrayList<SupplierDTO> supplierDTOS = new ArrayList<>();
-        ArrayList<Supplier> suppliers = supplierDAO.getAllSuppliers();
+        ArrayList<Supplier> suppliers = supplierDAO.getAll();
         for (Supplier supplier : suppliers) {
             supplierDTOS.add(new SupplierDTO(supplier.getSupplier_id(),supplier.getName(),supplier.getEmail(),supplier.getContact(),supplier.getAddress()));
         }
@@ -29,17 +29,17 @@ public class SupplierBOImpl implements SupplierBO {
     }
 
     @Override
-    public boolean deleteSupplier(String supplierId) throws SQLException, ClassNotFoundException {
+    public boolean delete(String supplierId) throws SQLException, ClassNotFoundException {
         return supplierDAO.delete(supplierId);
     }
 
     @Override
-    public boolean saveSupplier(SupplierDTO supplierDTO) throws SQLException, ClassNotFoundException {
+    public boolean save(SupplierDTO supplierDTO) throws SQLException, ClassNotFoundException {
         return supplierDAO.save(new Supplier(supplierDTO.getSupplier_id(),supplierDTO.getName(),supplierDTO.getEmail(),supplierDTO.getContact(),supplierDTO.getAddress()));
     }
 
     @Override
-    public boolean updateSupplier(SupplierDTO supplierDTO) throws SQLException, ClassNotFoundException {
+    public boolean update(SupplierDTO supplierDTO) throws SQLException, ClassNotFoundException {
         return supplierDAO.update(new Supplier(supplierDTO.getSupplier_id(),supplierDTO.getName(),supplierDTO.getEmail(),supplierDTO.getContact(),supplierDTO.getAddress()));
     }
 }

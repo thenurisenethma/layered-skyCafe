@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class ProductBOImpl implements ProductBO {
     ProductDAO productDAO =(ProductDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOType.PRODUCT);
     @Override
-    public ArrayList<ProductDTO> getAllProducts() throws SQLException, ClassNotFoundException {
+    public ArrayList<ProductDTO> getAll () throws SQLException, ClassNotFoundException {
         ArrayList<ProductDTO> productDTOS = new ArrayList<>();
         ArrayList<Product> products = productDAO.getAll();
         for (Product product : products) {
@@ -27,17 +27,17 @@ public class ProductBOImpl implements ProductBO {
     }
 
     @Override
-    public boolean deleteProduct(String productId) throws SQLException, ClassNotFoundException {
+    public boolean delete (String productId) throws SQLException, ClassNotFoundException {
         return productDAO.delete(productId);
     }
 
     @Override
-    public boolean saveProduct(ProductDTO productDTO) throws SQLException, ClassNotFoundException {
+    public boolean save(ProductDTO productDTO) throws SQLException, ClassNotFoundException {
         return productDAO.save(new Product(productDTO.getProduct_id(),productDTO.getName(),productDTO.getCategory(),productDTO.getPrice()));
     }
 
     @Override
-    public Boolean updateProduct(ProductDTO productDTO) throws SQLException, ClassNotFoundException {
+    public Boolean update(ProductDTO productDTO) throws SQLException, ClassNotFoundException {
         return productDAO.update(new Product(productDTO.getProduct_id(),productDTO.getName(),productDTO.getCategory(),productDTO.getPrice()));
     }
 }

@@ -13,18 +13,18 @@ import java.util.ArrayList;
 public class ScheduleBOImpl implements ScheduleBO {
     ScheduleDAO scheduleDAO = (ScheduleDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOType.SCHEDULE);
     @Override
-    public boolean saveSchedule(ScheduleDTO scheduleDTO) throws SQLException, ClassNotFoundException {
+    public boolean save(ScheduleDTO scheduleDTO) throws SQLException, ClassNotFoundException {
         return scheduleDAO.save(new Schedule(scheduleDTO.getEmployee_id(),scheduleDTO.getSchedule_id(),scheduleDTO.getDay(),scheduleDTO.getShift()));
 
     }
 
     @Override
-    public boolean deleteSchedule(String schedule_id) throws SQLException, ClassNotFoundException {
+    public boolean delete(String schedule_id) throws SQLException, ClassNotFoundException {
         return scheduleDAO.delete(schedule_id);
     }
 
     @Override
-    public ArrayList<ScheduleDTO> getAllSchedules() throws SQLException, ClassNotFoundException {
+    public ArrayList<ScheduleDTO> getAll() throws SQLException, ClassNotFoundException {
         ArrayList<ScheduleDTO> scheduleDTOS = new ArrayList<>();
         ArrayList<Schedule> schedules = scheduleDAO.getAll();
         for (Schedule schedule: schedules ){
@@ -40,7 +40,7 @@ public class ScheduleBOImpl implements ScheduleBO {
     }
 
     @Override
-    public boolean updateSchedule(ScheduleDTO scheduleDTO) throws SQLException, ClassNotFoundException {
+    public boolean update(ScheduleDTO scheduleDTO) throws SQLException, ClassNotFoundException {
         return scheduleDAO.update(new Schedule(scheduleDTO.getEmployee_id(),scheduleDTO.getSchedule_id(),scheduleDTO.getDay(),scheduleDTO.getShift()));
     }
 }
